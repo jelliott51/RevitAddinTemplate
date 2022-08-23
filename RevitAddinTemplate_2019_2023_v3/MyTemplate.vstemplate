@@ -1,0 +1,33 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>RevitAddinTemplate_2019_2023_v3</Name>
+    <Description>Revit addin template 2019-2023</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>RevitAddinTemplate_2019_2023_v3</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="RevitTemplateProject.csproj" File="RevitTemplateProject.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.cs">App.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Command.cs">Command.cs</ProjectItem>
+      <Folder Name="Embedded Media" TargetFolderName="Embedded Media" />
+      <ProjectItem ReplaceParameters="true" TargetFileName="manifest.addin">manifest.addin</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Resources.resx">Resources.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Resources.Designer.cs">Resources.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.settings">Settings.settings</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Settings.Designer.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Util.cs">Util.cs</ProjectItem>
+      <Folder Name="WPF" TargetFolderName="WPF" />
+    </Project>
+  </TemplateContent>
+</VSTemplate>

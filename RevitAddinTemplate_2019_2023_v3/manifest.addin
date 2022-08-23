@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command</Text>
+    <Description>Some description for Command</Description>
+    <Assembly>$safeprojectname$.dll</Assembly>
+    <FullClassName>$safeprojectname$.Command</FullClassName>
+    <ClientId>$guid1$</ClientId>
+    <VendorId>com.catorruma</VendorId>
+    <VendorDescription>Jacob Elliott</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application</Name>
+    <Assembly>$safeprojectname$.dll</Assembly>
+    <FullClassName>$safeprojectname$.App</FullClassName>
+    <ClientId>$guid2$</ClientId>
+    <VendorId>com.catorruma</VendorId>
+    <VendorDescription>Jacob Elliott</VendorDescription>
+  </AddIn>
+</RevitAddIns>
