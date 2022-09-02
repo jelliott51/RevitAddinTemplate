@@ -138,6 +138,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="cra_utils">
+      <HintPath>..\..\cra_utils\cra_utils\bin\Release$(RevitVersion)\cra_utils.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.Extensions" />
@@ -146,9 +150,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Xaml"/>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -188,10 +190,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).0.0" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).0.0" ExcludeAssets="runtime" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Embedded Media\" />
@@ -201,8 +200,18 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-  </Target>
+  </Target>-->
   <Target Name="AfterBuild">
+    <CallTarget Condition="$(Configuration.Contains('Release'))" Targets="AfterBuildRelease" />
   </Target>
-  -->
+  <Target Name="AfterBuildRelease">
+    <ItemGroup>
+      <!-- Because this ItemGroup is inside the target, this will enumerate
+                all files just before calling Copy. If the ItemGroup were outside
+                the target , it would enumerate the files during evaluation, before
+                the build starts, which may miss files created during the build. -->
+      <MySourceFiles Include="$(TargetDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MySourceFiles)" DestinationFiles="\\dfs-co\Installers\CRA Stuff\Revit Plugins\Addins\$(RevitVersion)\%(RecursiveDir)%(Filename)%(Extension)" />
+  </Target>
 </Project>
